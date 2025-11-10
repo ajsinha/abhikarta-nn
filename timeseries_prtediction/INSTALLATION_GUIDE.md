@@ -120,8 +120,9 @@ python simple_pytorch_example.py
 ## 🎯 Quick Examples
 
 ### Example 1: Train LSTM Model
+
 ```python
-from timeseries_all_models import create_model, train_model
+from timeseries_prtediction.timeseries_all_models import create_model, train_model
 
 # Create model
 model = create_model('lstm', input_size=10)
@@ -134,16 +135,18 @@ history, best_state = train_model(
 ```
 
 ### Example 2: Compare Transformations
+
 ```python
-from timeseries_enhanced_config import compare_transformation_methods
+from timeseries_prtediction.timeseries_enhanced_config import compare_transformation_methods
 
 results = compare_transformation_methods(X_raw, y_raw)
 # Automatically tests all 3 transformation methods
 ```
 
 ### Example 3: Use Ensemble
+
 ```python
-from ensemble_methods import AveragingEnsemble
+from timeseries_prtediction.ensemble_methods import AveragingEnsemble
 
 ensemble = AveragingEnsemble([model1, model2, model3])
 predictions = ensemble.predict(test_loader, device)

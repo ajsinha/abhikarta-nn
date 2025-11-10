@@ -267,8 +267,8 @@ What type of data do you have?
 ### Basic Usage
 
 ```python
-from timeseries_enhanced_config import (
-    TransformConfig, 
+from timeseries_prtediction.timeseries_enhanced_config import (
+    TransformConfig,
     TransformMethod,
     EnhancedTimeSeriesPreprocessor
 )
@@ -370,7 +370,7 @@ config = TransformConfig(
 
 ```python
 import pandas as pd
-from timeseries_enhanced_config import *
+from timeseries_prtediction.timeseries_enhanced_config import *
 
 # Load stock data
 df = pd.read_csv('stock_prices.csv')
@@ -379,9 +379,9 @@ prices = df['Close'].values.reshape(-1, 1)
 # Configuration for stock returns (standard in finance)
 config = TransformConfig(
     method=TransformMethod.FRACTIONAL_CHANGE,  # Returns
-    log_transform=True,                         # Log returns
-    clip_values=True,                           # Remove extreme events
-    clip_range=(-3, 3)                          # ±3 sigma
+    log_transform=True,  # Log returns
+    clip_values=True,  # Remove extreme events
+    clip_range=(-3, 3)  # ±3 sigma
 )
 
 # Transform
@@ -426,7 +426,7 @@ print(f"Scaler std: {info['scaler_std']}")
 ### Example 3: Compare Methods on Your Data
 
 ```python
-from timeseries_enhanced_config import compare_transformation_methods
+from timeseries_prtediction.timeseries_enhanced_config import compare_transformation_methods
 
 # Your data
 X_raw = ...  # Shape: (n_samples, n_features)
@@ -444,7 +444,7 @@ results = compare_transformation_methods(X_raw, y_raw)
 ```python
 import torch
 import torch.nn as nn
-from timeseries_enhanced_config import *
+from timeseries_prtediction.timeseries_enhanced_config import *
 
 # 1. Configure transformation
 config = TransformConfig(
@@ -461,6 +461,7 @@ y_scaled = y_preprocessor.fit_transform(y_raw)
 
 # 3. Create datasets
 from torch.utils.data import DataLoader
+
 train_dataset = TimeSeriesDataset(X_train, y_train, sequence_length=20)
 train_loader = DataLoader(train_dataset, batch_size=32, shuffle=True)
 

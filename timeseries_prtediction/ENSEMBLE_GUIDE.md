@@ -87,8 +87,9 @@ Expected RMSE reduction: 1/√N
 - Want to reduce overfitting
 
 **Example:**
+
 ```python
-from ensemble_methods import AverageEnsemble, EnsembleConfig
+from timeseries_prtediction.ensemble_methods import AverageEnsemble, EnsembleConfig
 
 config = EnsembleConfig(
     ensemble_type='average',
@@ -98,7 +99,7 @@ config = EnsembleConfig(
 
 ensemble = AverageEnsemble(config)
 ensemble.train(train_loader, val_loader, criterion, optim.Adam,
-              num_epochs=50, device=device)
+               num_epochs=50, device=device)
 
 predictions, individual_preds = ensemble.predict(test_loader, device)
 ```
@@ -145,12 +146,13 @@ weights = inverse_errors / inverse_errors.sum()
 - Want automatic weight optimization
 
 **Example:**
+
 ```python
-from ensemble_methods import WeightedEnsemble
+from timeseries_prtediction.ensemble_methods import WeightedEnsemble
 
 ensemble = WeightedEnsemble(config)
 ensemble.train(train_loader, val_loader, criterion, optim.Adam,
-              num_epochs=50, device=device)
+               num_epochs=50, device=device)
 
 # Weights are automatically computed
 print(f"Model weights: {ensemble.weights}")
@@ -206,8 +208,9 @@ where βi are learned weights (can be non-linear)
 - Base models have complementary strengths
 
 **Example:**
+
 ```python
-from ensemble_methods import StackingEnsemble
+from timeseries_prtediction.ensemble_methods import StackingEnsemble
 
 config = EnsembleConfig(
     ensemble_type='stacking',
@@ -217,7 +220,7 @@ config = EnsembleConfig(
 
 ensemble = StackingEnsemble(config)
 ensemble.train(train_loader, val_loader, criterion, optim.Adam,
-              num_epochs=50, device=device)
+               num_epochs=50, device=device)
 
 # Meta-learner coefficients show how models are combined
 print(f"Meta-learner coefficients: {ensemble.meta_learner.coef_}")
@@ -275,12 +278,13 @@ Ensemble variance ≈ σ² / N (for independent models)
 - Want to reduce overfitting
 
 **Example:**
+
 ```python
-from ensemble_methods import BaggingEnsemble
+from timeseries_prtediction.ensemble_methods import BaggingEnsemble
 
 ensemble = BaggingEnsemble(config)
 ensemble.train(train_dataset, val_loader, criterion, optim.Adam,
-              num_epochs=50, device=device, batch_size=32)
+               num_epochs=50, device=device, batch_size=32)
 
 predictions, _ = ensemble.predict(test_loader, device)
 ```
@@ -350,14 +354,14 @@ class TimeSeriesEnsemble:
 ### Example 1: Quick Ensemble
 
 ```python
-from ensemble_methods import create_ensemble
+from timeseries_prtediction.ensemble_methods import create_ensemble
 
 # Create ensemble (simple average)
 ensemble = create_ensemble('average', n_models=5)
 
 # Train
 ensemble.train(train_loader, val_loader, criterion, optim.Adam,
-              num_epochs=50, device=device)
+               num_epochs=50, device=device)
 
 # Predict
 predictions, _ = ensemble.predict(test_loader, device)
@@ -382,7 +386,7 @@ ensemble = StackingEnsemble(config)
 ### Example 3: Compare All Ensembles
 
 ```python
-from ensemble_methods import compare_ensembles
+from timeseries_prtediction.ensemble_methods import compare_ensembles
 
 results = compare_ensembles(
     train_dataset, val_loader, test_loader, device,

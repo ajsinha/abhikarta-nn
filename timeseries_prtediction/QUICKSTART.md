@@ -132,8 +132,8 @@ Create a new file `my_project.py`:
 ```python
 import pandas as pd
 import numpy as np
-from timeseries_enhanced_config import *
-from ensemble_methods import *
+from timeseries_prtediction.timeseries_enhanced_config import *
+from timeseries_prtediction.ensemble_methods import *
 import torch
 from torch.utils.data import DataLoader
 
@@ -175,7 +175,7 @@ test_loader = DataLoader(test_dataset, batch_size=32, shuffle=False)
 # 5. Train model (choose one)
 
 # Option A: Single Model
-from timeseries_all_models import LSTMModel, train_model, evaluate_model
+from timeseries_prtediction.timeseries_all_models import LSTMModel, train_model, evaluate_model
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 model = LSTMModel(input_size=10, hidden_sizes=[64, 32])
@@ -192,7 +192,7 @@ history, best_state = train_model(
 # Option B: Ensemble
 ensemble = create_ensemble('stacking', n_models=5)
 ensemble.train(train_loader, test_loader, criterion, torch.optim.Adam,
-              num_epochs=50, device=device)
+               num_epochs=50, device=device)
 
 # 6. Evaluate
 predictions, actuals, metrics = evaluate_model(model, test_loader, device)

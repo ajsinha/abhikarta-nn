@@ -521,7 +521,7 @@ Do you need real-time predictions?
 ### Example 1: Quick Start with LSTM
 
 ```python
-from timeseries_all_models import *
+from timeseries_prtediction.timeseries_all_models import *
 
 # Create model
 model = create_model('lstm', input_size=10, hidden_sizes=[64, 32])
@@ -532,7 +532,7 @@ criterion = nn.MSELoss()
 optimizer = optim.Adam(model.parameters(), lr=0.001)
 
 history, best_state = train_model(
-    model, train_loader, val_loader, 
+    model, train_loader, val_loader,
     criterion, optimizer, num_epochs=50, device=device
 )
 

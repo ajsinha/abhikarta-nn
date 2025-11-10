@@ -212,7 +212,7 @@ RMSE: 0.4643
 ### 1. Basic Training
 
 ```python
-from timeseries_pytorch import *
+from timeseries_prtediction.timeseries_pytorch import *
 
 # Load data
 X_raw = ...  # (n_samples, 10)
@@ -235,7 +235,7 @@ optimizer = optim.Adam(model.parameters(), lr=0.001)
 
 # Train
 history, best_state = train_model(
-    model, train_loader, val_loader, 
+    model, train_loader, val_loader,
     criterion, optimizer, num_epochs=100, device=device
 )
 ```

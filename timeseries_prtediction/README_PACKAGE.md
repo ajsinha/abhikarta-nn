@@ -120,8 +120,8 @@ python ensemble_methods.py
 ### Quick Code
 
 ```python
-from timeseries_enhanced_config import *
-from ensemble_methods import *
+from timeseries_prtediction.timeseries_enhanced_config import *
+from timeseries_prtediction.ensemble_methods import *
 
 # 1. Configure transformation
 config = TransformConfig(method=TransformMethod.FRACTIONAL_CHANGE)
@@ -133,7 +133,7 @@ X_scaled = preprocessor.fit_transform(X_raw)
 # 3. Create ensemble
 ensemble = create_ensemble('stacking', n_models=5)
 ensemble.train(train_loader, val_loader, criterion, optim.Adam,
-              num_epochs=50, device=device)
+               num_epochs=50, device=device)
 
 # 4. Predict
 predictions, _ = ensemble.predict(test_loader, device)
