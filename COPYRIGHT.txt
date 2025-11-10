@@ -1,0 +1,147 @@
+================================================================================
+COPYRIGHT AND LEGAL NOTICE
+================================================================================
+
+Copyright © 2025-2030, All Rights Reserved
+Ashutosh Sinha
+Email: ajsinha@gmail.com
+
+================================================================================
+LEGAL NOTICE
+================================================================================
+
+This document and the associated software architecture are proprietary and 
+confidential. Unauthorized copying, distribution, modification, or use of this 
+document or the software system it describes is strictly prohibited without 
+explicit written permission from the copyright holder.
+
+This document is provided "as is" without warranty of any kind, either 
+expressed or implied. The copyright holder shall not be liable for any damages 
+arising from the use of this document or the software system it describes.
+
+Patent Pending: Certain architectural patterns and implementations described 
+in this document may be subject to patent applications.
+
+================================================================================
+COVERED MATERIALS
+================================================================================
+
+This copyright and legal notice applies to all files in this package, including 
+but not limited to:
+
+1. Source Code Files:
+   - timeseries_all_models.py
+   - timeseries_enhanced_config.py
+   - timeseries_pytorch.py
+   - timeseries_deep_learning.py
+   - ensemble_methods.py
+   - simple_pytorch_example.py
+   - simple_timeseries_example.py
+   - simple_config_example.py
+   
+2. Documentation Files:
+   - README_MASTER.md
+   - MODEL_GUIDE.md
+   - USAGE_GUIDE.md
+   - TECHNICAL_GUIDE.md
+   - TRANSFORMATION_GUIDE.md
+   - DOCUMENTATION_INDEX.md
+   - ENHANCEMENT_README.md
+   - COMPARISON_GUIDE.md
+   - README.md
+   - README_PYTORCH.md
+
+3. All Associated Files:
+   - Requirements files
+   - Configuration files
+   - Example scripts
+   - Any derivative works
+
+================================================================================
+TERMS OF USE
+================================================================================
+
+1. PERMITTED USES:
+   - Personal use for learning and experimentation
+   - Academic research with proper attribution
+   - Internal business use with written permission
+
+2. PROHIBITED USES:
+   - Commercial distribution without license
+   - Modification and redistribution without permission
+   - Removal of copyright notices
+   - Patent infringement
+   - Unauthorized derivative works
+
+3. ATTRIBUTION REQUIREMENTS:
+   When using this software or documentation, you must:
+   - Retain all copyright notices
+   - Credit: Ashutosh Sinha (ajsinha@gmail.com)
+   - Include this copyright notice in derivative works
+   - Acknowledge patent-pending status where applicable
+
+================================================================================
+LICENSING INQUIRIES
+================================================================================
+
+For licensing, commercial use, or permission requests, contact:
+
+Ashutosh Sinha
+Email: ajsinha@gmail.com
+
+Please include:
+- Your name and organization
+- Intended use of the software/documentation
+- Scope of distribution (if applicable)
+- Timeline for use
+
+================================================================================
+PATENT INFORMATION
+================================================================================
+
+Patent Pending Status: Certain architectural patterns, ensemble methods, and 
+implementations described in this package may be subject to patent applications.
+
+This includes but is not limited to:
+- Novel ensemble architecture combinations
+- Transformation method configurations
+- Specific preprocessing techniques
+- Integration patterns for time series models
+
+================================================================================
+WARRANTY DISCLAIMER
+================================================================================
+
+THE SOFTWARE AND DOCUMENTATION ARE PROVIDED "AS IS", WITHOUT WARRANTY OF ANY 
+KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF 
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+
+IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE FOR ANY CLAIM, DAMAGES OR 
+OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING 
+FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS 
+IN THE SOFTWARE.
+
+================================================================================
+VERSION INFORMATION
+================================================================================
+
+Package Version: 1.0.0
+Copyright Date: 2025-2030
+Last Updated: November 2024
+
+================================================================================
+CONTACT INFORMATION
+================================================================================
+
+Copyright Holder: Ashutosh Sinha
+Email: ajsinha@gmail.com
+
+For questions regarding:
+- Licensing: ajsinha@gmail.com
+- Patent information: ajsinha@gmail.com
+- Permission requests: ajsinha@gmail.com
+- General inquiries: ajsinha@gmail.com
+
+================================================================================
+END OF COPYRIGHT NOTICE
+================================================================================
