@@ -521,7 +521,7 @@ Do you need real-time predictions?
 ### Example 1: Quick Start with LSTM
 
 ```python
-from timeseries_prtediction.v1 import *
+from timeseries_prediction.v1 import *
 
 # Create model
 model = create_model('lstm', input_size=10, hidden_sizes=[64, 32])

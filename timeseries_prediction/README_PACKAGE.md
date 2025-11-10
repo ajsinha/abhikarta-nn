@@ -120,8 +120,8 @@ python ensemble_methods.py
 ### Quick Code
 
 ```python
-from timeseries_prtediction.timeseries_enhanced_config import *
-from timeseries_prtediction.ensemble_methods import *
+from timeseries_prediction.timeseries_enhanced_config import *
+from timeseries_prediction.ensemble_methods import *
 
 # 1. Configure transformation
 config = TransformConfig(method=TransformMethod.FRACTIONAL_CHANGE)

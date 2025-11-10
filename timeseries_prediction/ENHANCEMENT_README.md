@@ -27,17 +27,17 @@ All with configurable log transforms and outlier clipping!
 ### Option 1: Use a Specific Method
 
 ```python
-from timeseries_prtediction.timeseries_enhanced_config import (
-    TransformConfig,
-    TransformMethod,
-    EnhancedTimeSeriesPreprocessor
+from timeseries_prediction.timeseries_enhanced_config import (
+   TransformConfig,
+   TransformMethod,
+   EnhancedTimeSeriesPreprocessor
 )
 
 # Choose your transformation method
 config = TransformConfig(
-    method=TransformMethod.FRACTIONAL_CHANGE,  # or RATIO or PERCENTAGE_CHANGE
-    log_transform=True,
-    clip_values=False
+   method=TransformMethod.FRACTIONAL_CHANGE,  # or RATIO or PERCENTAGE_CHANGE
+   log_transform=True,
+   clip_values=False
 )
 
 # Create preprocessor
@@ -50,7 +50,7 @@ X_transformed = preprocessor.fit_transform(X_raw)
 ### Option 2: Compare All Methods Automatically
 
 ```python
-from timeseries_prtediction.timeseries_enhanced_config import compare_transformation_methods
+from timeseries_prediction.timeseries_enhanced_config import compare_transformation_methods
 
 # Your data
 X_raw = ...  # Shape: (n_samples, 10)
@@ -241,7 +241,7 @@ What type of data?
 
 ```python
 import pandas as pd
-from timeseries_prtediction.timeseries_enhanced_config import *
+from timeseries_prediction.timeseries_enhanced_config import *
 
 # Load stock data
 df = pd.read_csv('stock_prices.csv')
@@ -250,10 +250,10 @@ target = df[['Close']].values
 
 # Configuration for stock returns (standard approach)
 config = TransformConfig(
-    method=TransformMethod.FRACTIONAL_CHANGE,  # Returns
-    log_transform=True,  # Log-returns
-    clip_values=True,  # Remove extreme events
-    clip_range=(-3, 3)  # ±3 sigma
+   method=TransformMethod.FRACTIONAL_CHANGE,  # Returns
+   log_transform=True,  # Log-returns
+   clip_values=True,  # Remove extreme events
+   clip_range=(-3, 3)  # ±3 sigma
 )
 
 # Preprocess
@@ -287,14 +287,14 @@ results = compare_transformation_methods(X_raw, y_raw)
 ### Example 3: Complete Pipeline
 
 ```python
-from timeseries_prtediction.timeseries_enhanced_config import *
+from timeseries_prediction.timeseries_enhanced_config import *
 import torch
 from torch.utils.data import DataLoader
 
 # 1. Configure
 config = TransformConfig(
-    method=TransformMethod.FRACTIONAL_CHANGE,
-    log_transform=True
+   method=TransformMethod.FRACTIONAL_CHANGE,
+   log_transform=True
 )
 
 # 2. Preprocess
@@ -311,9 +311,9 @@ model = LSTMModel(input_size=10)
 
 # 5. Save with config
 torch.save({
-    'model_state_dict': model.state_dict(),
-    'config': config,  # IMPORTANT!
-    'preprocessor': X_preprocessor
+   'model_state_dict': model.state_dict(),
+   'config': config,  # IMPORTANT!
+   'preprocessor': X_preprocessor
 }, 'model_with_config.pth')
 ```
 
@@ -361,7 +361,7 @@ print(f"Scaler std: {info['scaler_std']}")
 ### Visualize All Methods
 
 ```python
-from timeseries_prtediction.timeseries_enhanced_config import visualize_transformation_comparison
+from timeseries_prediction.timeseries_enhanced_config import visualize_transformation_comparison
 
 # Compare and visualize
 results = compare_transformation_methods(X_raw, y_raw)
@@ -543,7 +543,7 @@ X_scaled = preprocessor.fit_transform(X_raw)
 **Before:**
 
 ```python
-from timeseries_prtediction.timeseries_pytorch import TimeSeriesRatioPreprocessor
+from timeseries_prediction.timeseries_pytorch import TimeSeriesRatioPreprocessor
 
 preprocessor = TimeSeriesRatioPreprocessor()
 X_scaled = preprocessor.fit_transform(X_raw)
@@ -552,14 +552,14 @@ X_scaled = preprocessor.fit_transform(X_raw)
 **After:**
 
 ```python
-from timeseries_prtediction.timeseries_enhanced_config import (
-    TransformConfig,
-    TransformMethod,
-    EnhancedTimeSeriesPreprocessor
+from timeseries_prediction.timeseries_enhanced_config import (
+   TransformConfig,
+   TransformMethod,
+   EnhancedTimeSeriesPreprocessor
 )
 
 config = TransformConfig(
-    method=TransformMethod.RATIO  # Same as before
+   method=TransformMethod.RATIO  # Same as before
 )
 preprocessor = EnhancedTimeSeriesPreprocessor(config)
 X_scaled = preprocessor.fit_transform(X_raw)

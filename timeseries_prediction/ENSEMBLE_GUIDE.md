@@ -89,7 +89,7 @@ Expected RMSE reduction: 1/√N
 **Example:**
 
 ```python
-from timeseries_prtediction.ensemble_methods import AverageEnsemble, EnsembleConfig
+from timeseries_prediction.ensemble_methods import AverageEnsemble, EnsembleConfig
 
 config = EnsembleConfig(
     ensemble_type='average',
@@ -148,7 +148,7 @@ weights = inverse_errors / inverse_errors.sum()
 **Example:**
 
 ```python
-from timeseries_prtediction.ensemble_methods import WeightedEnsemble
+from timeseries_prediction.ensemble_methods import WeightedEnsemble
 
 ensemble = WeightedEnsemble(config)
 ensemble.train(train_loader, val_loader, criterion, optim.Adam,
@@ -210,7 +210,7 @@ where βi are learned weights (can be non-linear)
 **Example:**
 
 ```python
-from timeseries_prtediction.ensemble_methods import StackingEnsemble
+from timeseries_prediction.ensemble_methods import StackingEnsemble
 
 config = EnsembleConfig(
     ensemble_type='stacking',
@@ -280,7 +280,7 @@ Ensemble variance ≈ σ² / N (for independent models)
 **Example:**
 
 ```python
-from timeseries_prtediction.ensemble_methods import BaggingEnsemble
+from timeseries_prediction.ensemble_methods import BaggingEnsemble
 
 ensemble = BaggingEnsemble(config)
 ensemble.train(train_dataset, val_loader, criterion, optim.Adam,
@@ -354,7 +354,7 @@ class TimeSeriesEnsemble:
 ### Example 1: Quick Ensemble
 
 ```python
-from timeseries_prtediction.ensemble_methods import create_ensemble
+from timeseries_prediction.ensemble_methods import create_ensemble
 
 # Create ensemble (simple average)
 ensemble = create_ensemble('average', n_models=5)
@@ -386,7 +386,7 @@ ensemble = StackingEnsemble(config)
 ### Example 3: Compare All Ensembles
 
 ```python
-from timeseries_prtediction.ensemble_methods import compare_ensembles
+from timeseries_prediction.ensemble_methods import compare_ensembles
 
 results = compare_ensembles(
     train_dataset, val_loader, test_loader, device,

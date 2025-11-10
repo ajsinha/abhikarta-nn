@@ -267,7 +267,7 @@ What type of data do you have?
 ### Basic Usage
 
 ```python
-from timeseries_prtediction.timeseries_enhanced_config import (
+from timeseries_prediction.timeseries_enhanced_config import (
     TransformConfig,
     TransformMethod,
     EnhancedTimeSeriesPreprocessor
@@ -370,7 +370,7 @@ config = TransformConfig(
 
 ```python
 import pandas as pd
-from timeseries_prtediction.timeseries_enhanced_config import *
+from timeseries_prediction.timeseries_enhanced_config import *
 
 # Load stock data
 df = pd.read_csv('stock_prices.csv')
@@ -426,7 +426,7 @@ print(f"Scaler std: {info['scaler_std']}")
 ### Example 3: Compare Methods on Your Data
 
 ```python
-from timeseries_prtediction.timeseries_enhanced_config import compare_transformation_methods
+from timeseries_prediction.timeseries_enhanced_config import compare_transformation_methods
 
 # Your data
 X_raw = ...  # Shape: (n_samples, n_features)
@@ -444,7 +444,7 @@ results = compare_transformation_methods(X_raw, y_raw)
 ```python
 import torch
 import torch.nn as nn
-from timeseries_prtediction.timeseries_enhanced_config import *
+from timeseries_prediction.timeseries_enhanced_config import *
 
 # 1. Configure transformation
 config = TransformConfig(

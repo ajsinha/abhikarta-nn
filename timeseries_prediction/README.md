@@ -115,7 +115,7 @@ When you run the complete script, it produces:
 
 ```python
 import pandas as pd
-from timeseries_prtediction.v1 import *
+from timeseries_prediction.timeseries_deep_learning import *
 
 # Load data
 df = pd.read_csv('mydata.csv')

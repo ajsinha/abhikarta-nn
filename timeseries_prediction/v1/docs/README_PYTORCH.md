@@ -212,7 +212,7 @@ RMSE: 0.4643
 ### 1. Basic Training
 
 ```python
-from timeseries_prtediction.v1 import *
+from timeseries_prediction.v1 import *
 
 # Load data
 X_raw = ...  # (n_samples, 10)

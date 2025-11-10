@@ -40,7 +40,7 @@ print(f"Device: {torch.device('cuda' if torch.cuda.is_available() else 'cpu')}")
 ### 3. Import the Module
 
 ```python
-from timeseries_prtediction.timeseries_all_models import (
+from timeseries_prediction.v1 import (
     TimeSeriesRatioPreprocessor,
     TimeSeriesDataset,
     create_model,
@@ -81,7 +81,7 @@ print(f"Data shape: X={X_raw.shape}, y={y_raw.shape}")
 ### Step 2: Preprocess with Ratio Transformation
 
 ```python
-from timeseries_prtediction.timeseries_all_models import TimeSeriesRatioPreprocessor
+from timeseries_prediction.v1 import TimeSeriesRatioPreprocessor
 
 # Create preprocessors
 X_preprocessor = TimeSeriesRatioPreprocessor()
@@ -97,7 +97,7 @@ print(f"Preprocessed shape: X={X_scaled.shape}, y={y_scaled.shape}")
 ### Step 3: Create Datasets
 
 ```python
-from timeseries_prtediction.timeseries_all_models import TimeSeriesDataset
+from timeseries_prediction.v1 import TimeSeriesDataset
 from torch.utils.data import DataLoader
 
 # Split data temporally
@@ -132,7 +132,7 @@ print(f"Test batches: {len(test_loader)}")
 ### Step 4: Create and Train Model
 
 ```python
-from timeseries_prtediction.timeseries_all_models import create_model, train_model
+from timeseries_prediction.v1 import create_model, train_model
 
 # Create model
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
@@ -163,7 +163,7 @@ model.load_state_dict(best_state)
 ### Step 5: Evaluate
 
 ```python
-from timeseries_prtediction.timeseries_all_models import evaluate_model
+from timeseries_prediction.v1 import evaluate_model
 
 predictions, actuals, metrics = evaluate_model(model, test_loader, device)
 
@@ -957,7 +957,7 @@ from torch.utils.data import DataLoader
 import matplotlib.pyplot as plt
 import pickle
 
-from timeseries_prtediction.timeseries_all_models import (
+from timeseries_prediction.v1 import (
     TimeSeriesRatioPreprocessor,
     TimeSeriesDataset,
     create_model,
