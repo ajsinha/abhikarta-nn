@@ -90,7 +90,7 @@ class TransformerNetwork(nn.Module):
         self.input_projection = nn.Linear(input_size, d_model)
         self.pos_encoder = PositionalEncoding(d_model, dropout)
         
-        encoder_layers = nn.TransformerEncoderLayer(d_model, nhead, dim_feedforward=d_model*4, dropout=dropout)
+        encoder_layers = nn.TransformerEncoderLayer(d_model, nhead, dim_feedforward=d_model*4, dropout=dropout, batch_first=True)
         self.transformer_encoder = nn.TransformerEncoder(encoder_layers, num_layers)
         
         self.fc = nn.Linear(d_model, output_size)

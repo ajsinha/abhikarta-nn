@@ -328,7 +328,7 @@ def main():
     # Plot results
     print("\n6. Generating visualizations...")
     for name, result in results.items():
-        save_path = f" ./{name}_energy_forecast.png"
+        save_path =  f"./{name}_energy_forecast.png"
         plot_results(
             timestamps_test.values,
             y_test.values.flatten(),

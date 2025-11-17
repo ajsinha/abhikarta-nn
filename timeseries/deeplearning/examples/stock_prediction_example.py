@@ -244,7 +244,7 @@ def main():
                     name,
                     target
                 )
-                filename = f" ./{name}_{target}_prediction.png"
+                filename =  f"./{name}_{target}_prediction.png"
                 plot.savefig(filename)
                 plt.close()
                 print(f"  Saved: {filename}")
