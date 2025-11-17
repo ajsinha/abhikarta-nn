@@ -297,7 +297,7 @@ def main():
         test_data['value'].iloc[sequence_length:sequence_length+forecast_horizon].values,
         forecasts,
         forecast_horizon,
-        "./multistep_forecast_comparison.png"
+        " ./multistep_forecast_comparison.png"
     )
     print("   Saved: multistep_forecast_comparison.png")
     
@@ -316,7 +316,7 @@ def main():
     plt.legend()
     plt.grid(True, alpha=0.3)
     plt.tight_layout()
-    plt.savefig("./forecast_error_by_horizon.png")
+    plt.savefig(" ./forecast_error_by_horizon.png")
     plt.close()
     print("   Saved: forecast_error_by_horizon.png")
     

@@ -51,8 +51,8 @@ def download_stock_data(tickers, start_date, end_date):
         prices = pd.DataFrame(data['Close'])
         prices.columns = tickers
     
-    # Handle missing values
-    prices = prices.fillna(method='ffill').fillna(method='bfill')
+    # Handle missing values (forward fill then backward fill)
+    prices = prices.ffill().bfill()
     
     print(f"Downloaded {len(prices)} days of data")
     return prices
@@ -95,8 +95,14 @@ def train_and_evaluate_model(model, X_train, y_train, X_test, y_test, model_name
 def plot_predictions(y_test, predictions, model_name, target_name):
     """Plot actual vs predicted values."""
     plt.figure(figsize=(12, 6))
-    plt.plot(y_test.values, label='Actual', alpha=0.7)
-    plt.plot(predictions, label='Predicted', alpha=0.7)
+    
+    # Ensure same length by taking the minimum
+    min_len = min(len(y_test), len(predictions))
+    y_test_plot = y_test.values[-min_len:] if hasattr(y_test, 'values') else y_test[-min_len:]
+    pred_plot = predictions[-min_len:] if len(predictions) > min_len else predictions
+    
+    plt.plot(y_test_plot, label='Actual', alpha=0.7)
+    plt.plot(pred_plot, label='Predicted', alpha=0.7)
     plt.title(f'{model_name} - {target_name} Price Prediction')
     plt.xlabel('Time')
     plt.ylabel('Price ($)')
@@ -176,23 +182,26 @@ def main():
     # Create ensemble
     print("\n5. Creating ensemble model...")
     if len(trained_models) >= 2:
-        ensemble = EnsembleModel(trained_models, method='average')
-        ensemble.is_fitted = True  # Models are already fitted
-        
-        ensemble_predictions = ensemble.predict(X_test)
-        ensemble_metrics = ensemble.evaluate(X_test, y_test)
-        
-        print(f"\nEnsemble Performance:")
-        print(f"  RMSE: {ensemble_metrics['rmse']:.4f}")
-        print(f"  MAE: {ensemble_metrics['mae']:.4f}")
-        print(f"  MAPE: {ensemble_metrics['mape']:.2f}%")
-        print(f"  R²: {ensemble_metrics['r2']:.4f}")
-        
-        results['Ensemble'] = {
-            'model': ensemble,
-            'predictions': ensemble_predictions,
-            'metrics': ensemble_metrics
-        }
+        try:
+            ensemble = EnsembleModel(trained_models, method='average')
+            ensemble.is_fitted = True  # Models are already fitted
+            
+            ensemble_predictions = ensemble.predict(X_test)
+            ensemble_metrics = ensemble.evaluate(X_test, y_test)
+            
+            print(f"\nEnsemble Performance:")
+            print(f"  RMSE: {ensemble_metrics['rmse']:.4f}")
+            print(f"  MAE: {ensemble_metrics['mae']:.4f}")
+            print(f"  MAPE: {ensemble_metrics['mape']:.2f}%")
+            print(f"  R²: {ensemble_metrics['r2']:.4f}")
+            
+            results['Ensemble'] = {
+                'model': ensemble,
+                'predictions': ensemble_predictions,
+                'metrics': ensemble_metrics
+            }
+        except Exception as e:
+            print(f"\nError creating ensemble: {str(e)}")
     
     # Summary
     print("\n" + "="*60)
@@ -212,23 +221,35 @@ def main():
     
     # Inverse transform predictions for visualization
     print("\n6. Generating visualizations...")
-    y_test_original = normalizer_y.inverse_transform(y_test)
     
     for name, result in results.items():
-        pred_df = pd.DataFrame(result['predictions'], columns=TARGET_STOCKS)
+        pred_array = result['predictions']
+        
+        # Create dataframe with proper shape
+        if len(pred_array.shape) == 1:
+            pred_array = pred_array.reshape(-1, len(TARGET_STOCKS))
+        
+        pred_df = pd.DataFrame(pred_array, columns=TARGET_STOCKS)
         pred_original = normalizer_y.inverse_transform(pred_df)
         
+        # Adjust y_test to match prediction length
+        y_test_aligned = y_test.iloc[-len(pred_df):]
+        y_test_original = normalizer_y.inverse_transform(y_test_aligned)
+        
         for i, target in enumerate(TARGET_STOCKS):
-            plot = plot_predictions(
-                y_test_original.iloc[:, i],
-                pred_original.iloc[:, i].values,
-                name,
-                target
-            )
-            filename = f"./{name}_{target}_prediction.png"
-            plot.savefig(filename)
-            plt.close()
-            print(f"  Saved: {filename}")
+            try:
+                plot = plot_predictions(
+                    y_test_original.iloc[:, i],
+                    pred_original.iloc[:, i].values,
+                    name,
+                    target
+                )
+                filename = f" ./{name}_{target}_prediction.png"
+                plot.savefig(filename)
+                plt.close()
+                print(f"  Saved: {filename}")
+            except Exception as e:
+                print(f"  Warning: Could not plot {name}-{target}: {str(e)}")
     
     print("\n" + "="*60)
     print("Example completed successfully!")

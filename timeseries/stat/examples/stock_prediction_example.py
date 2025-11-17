@@ -52,8 +52,8 @@ def download_stock_data(tickers, start_date, end_date):
         prices = pd.DataFrame(data['Close'])
         prices.columns = tickers
     
-    # Handle missing values
-    prices = prices.fillna(method='ffill').fillna(method='bfill')
+    # Handle missing values (forward fill then backward fill)
+    prices = prices.ffill().bfill()
     
     print(f"Downloaded {len(prices)} days of data")
     return prices
@@ -240,7 +240,7 @@ def main():
                             target
                         )
                         if plot:
-                            filename = f"./{name}_{target}_prediction.png"
+                            filename = f"/home/claude/timeseries_package/timeseries/stat/examples/{name}_{target}_prediction.png"
                             plot.savefig(filename)
                             plt.close()
                             print(f"  Saved: {filename}")

@@ -97,6 +97,15 @@ class TimeSeriesModel(ABC):
         predictions = self.predict(X)
         y_true = y.values if isinstance(y, pd.DataFrame) else y
         
+        # Handle shape mismatch due to sequence preparation
+        # Predictions may be shorter than y_true due to sequence_length
+        if len(predictions) < len(y_true):
+            # Use only the last part of y_true that matches predictions
+            y_true = y_true[-len(predictions):]
+        elif len(predictions) > len(y_true):
+            # Truncate predictions (shouldn't happen but handle it)
+            predictions = predictions[:len(y_true)]
+        
         metrics = {
             'mse': self._calculate_mse(y_true, predictions),
             'rmse': self._calculate_rmse(y_true, predictions),
