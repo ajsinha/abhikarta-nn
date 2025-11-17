@@ -9,7 +9,7 @@ deep learning and statistical models with real-world considerations.
 """
 
 import sys
-sys.path.append('/home/claude/timeseries_package')
+
 
 import numpy as np
 import pandas as pd
@@ -328,7 +328,7 @@ def main():
     # Plot results
     print("\n6. Generating visualizations...")
     for name, result in results.items():
-        save_path = f"/home/claude/timeseries_package/timeseries/deeplearning/examples/{name}_energy_forecast.png"
+        save_path = f"./{name}_energy_forecast.png"
         plot_results(
             timestamps_test.values,
             y_test.values.flatten(),

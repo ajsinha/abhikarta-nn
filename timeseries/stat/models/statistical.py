@@ -17,7 +17,7 @@ import warnings
 warnings.filterwarnings('ignore')
 
 import sys
-sys.path.append('/home/claude/timeseries_package')
+
 from timeseries.model import TimeSeriesModel
 
 

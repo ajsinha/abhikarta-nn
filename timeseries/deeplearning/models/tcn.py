@@ -17,7 +17,7 @@ import numpy as np
 import pandas as pd
 from typing import Dict, Optional, Any
 import sys
-sys.path.append('/home/claude/timeseries_package')
+
 from timeseries.model import TimeSeriesModel
 
 

@@ -16,7 +16,7 @@ to predict stock prices. Uses 10 stocks as features to predict BMO and C stocks.
 """
 
 import sys
-sys.path.append('/home/claude/timeseries_package')
+
 
 import numpy as np
 import pandas as pd
@@ -225,7 +225,7 @@ def main():
                 name,
                 target
             )
-            filename = f"/home/claude/timeseries_package/timeseries/deeplearning/examples/{name}_{target}_prediction.png"
+            filename = f"./{name}_{target}_prediction.png"
             plot.savefig(filename)
             plt.close()
             print(f"  Saved: {filename}")
