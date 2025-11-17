@@ -1,0 +1,12 @@
+include README.md
+include LICENSE
+include INSTALL.md
+include COPYRIGHT.txt
+include requirements.txt
+recursive-include timeseries/deeplearning/docs *.md
+recursive-include timeseries/stat/docs *.md
+recursive-include timeseries *.py
+global-exclude __pycache__
+global-exclude *.pyc
+global-exclude *.pyo
+global-exclude .DS_Store
